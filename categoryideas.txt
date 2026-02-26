@@ -1,0 +1,5 @@
+staff at a school
+- Teacher
+- Nurse
+- Chef
+- Secretary
