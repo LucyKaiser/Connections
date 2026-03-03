@@ -1,0 +1,27 @@
+homepage
+ - List of puzzles, each puzzle is a link
+    - generated from list file?
+    - Name, author, date, completion status (local storage)
+    - clicking link calls startGame function
+
+startGame function
+ - Takes id input
+    - gets game object configuration from list file
+    - hides link menu, unhides game menu
+    - calls initialize board method
+
+Game class
+ - take input of initial game state, correct answers, author, name
+ - Getters
+    - get number of blocks selected
+    - get value of blocks selected
+    - get number of answers remaining
+ - Methods
+    - initialize board
+        - sets block names
+        - sets name and author
+        - adds event listeners to block
+            - add "selected" class when clicked, only if <=3 are selected
+    - Check answer
+        - gets values of selected blocks
+        - check if list of values
