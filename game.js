@@ -10,6 +10,8 @@ export default class Game {
                            blue:{blue1:"", blue2:"", blue3:"", blue4:""}, blueDescription:"",
                            purple:{purple1:"", purple2:"", purple3:"", purple4:""}, purpleDescription:""}
     maxGuessAmount = 4
+    categoriesGuessed = 0
+    guessHistory = []
 
     constructor(puzzleName, puzzleAuthor, initialPuzzleStateObject, puzzleSolutionObject) {
         this.puzzleName = puzzleName
@@ -35,57 +37,131 @@ export default class Game {
         let i = 1
         for (let key in this.initialPuzzleStateObject) {
             let currentDivName = `div${i}`
-            console.log(currentDivName);
+            // console.log(currentDivName);
             let currentDiv = document.getElementById(currentDivName)
             currentDiv.innerText = this.initialPuzzleStateObject[key]
             i++
         }
     }
+    getPathString(obj, value, currentPath = '') {
+        for (const key in obj) {
+
+            let newPath = currentPath
+            ? (Array.isArray(obj) ? `${currentPath}[${key}]` : `${currentPath}.${key}`)
+            : key;
+
+            if (obj[key] === value) {
+                return newPath;
+            }
+
+            if (typeof obj[key] === 'object' && obj[key] !== null) {
+            const result = this.getPathString(obj[key], value, newPath);
+                if (result) {
+                    return result;
+                }
+            }
+        }
+        return null;
+    }
+
+    guessHistoryToString() {
+        console.log("this.guessHistory ==> ", this.guessHistory);
+        console.log("this.guessHistory.length ==> ", this.guessHistory.length);
+        let answersString = ""
+        console.log("typeof this.answerHistory ==> ", typeof this.answerHistory);
+        for (let x = 0; x < this.guessHistory.length; x++) {
+            if ((this.guessHistory[x]) == "NEWLINE") {
+                answersString = answersString + "\n"
+            } else {
+                answersString = answersString + this.guessHistory[x]
+            }
+        }
+        return answersString
+    }
+
+    removeSelected() {
+        for (let x = 1; x <= 16; x++) {
+            let currentDiv = document.getElementById(`div${x}`)
+            if (currentDiv.classList.contains("selected")) {
+                currentDiv.classList.remove("selected")
+            }
+        }
+    }
+
+    setCorrectlyGuessedCategory(color) {
+        let yellow = "#f9df6d"
+        let green = "#a0c35a"
+        let blue = "#b0c4ef"
+        let purple = "#ba81c5"
+        console.log(`setting correct category to ${color}`);
+    }
+
     submit() {
         let submittedValues = []
+        let guessPaths = []
+        let guessColors = []
         for (let x = 1; x <= 16; x++) {
             let currentDiv = document.getElementById(`div${x}`)
             if (currentDiv.classList.contains("selected")) {
                 submittedValues.push(currentDiv.innerText)
+                guessPaths.push(this.getPathString(this.puzzleSolutionObject, currentDiv.innerText))
             }
         }
+        console.log("guessPaths ==> ", guessPaths);
         console.log("submittedValues ==> ", submittedValues);
-        let yellowAnswers = Object.values(this.puzzleSolutionObject.yellow)
-        console.log("yellowAnswers ==> ", yellowAnswers);
-        let blueAnswers = Object.values(this.puzzleSolutionObject.blue)
-        console.log("blueAnswers ==> ", blueAnswers);
-        let greenAnswers = Object.values(this.puzzleSolutionObject.green)
-        console.log("greenAnswers ==> ", greenAnswers);
-        let purpleAnswers = Object.values(this.puzzleSolutionObject.purple)
-        console.log("purpleAnswers ==> ", purpleAnswers);
-        // https://stackoverflow.com/a/59581552
-        let matchesYellow = JSON.stringify(yellowAnswers.sort()) === JSON.stringify(submittedValues.sort())
-        console.log("matchesYellow ==> ", matchesYellow);
-        let matchesBlue = JSON.stringify(blueAnswers.sort()) === JSON.stringify(submittedValues.sort())
-        console.log("matchesBlue ==> ", matchesBlue);
-        let matchesGreen = JSON.stringify(greenAnswers.sort()) === JSON.stringify(submittedValues.sort())
-        console.log("matchesGreen ==> ", matchesGreen);
-        let matchesPurple = JSON.stringify(purpleAnswers.sort()) === JSON.stringify(submittedValues.sort())
-        console.log("matchesPurple ==> ", matchesPurple);
-
-        if (matchesYellow == true){
-            // Yellow case
-            console.log("matches yellow");
+        for (let x = 0; x < 4; x++) {
+            let text = guessPaths[x]
+            text = text.split(".")[0]
+            console.log("text ==> ", text);
+            guessColors[x] = text
         }
-        else if (matchesBlue == true) {
-            // Blue case
-            console.log("matches blue");
-
+        console.log("guessPaths ==> ", guessPaths);
+        console.log("guessColors ==> ", guessColors);
+        let numOfYellow = 0
+        let numOfBlue = 0
+        let numOfGreen = 0
+        let numOfPurple = 0
+        for (let x = 0; x < 4; x++) {
+            switch (guessColors[x]) {
+                case "yellow":
+                    numOfYellow += 1
+                    this.guessHistory.push("🟨")
+                    break
+                case "blue":
+                    numOfBlue += 1
+                    this.guessHistory.push("🟦")
+                    break
+                case "green":
+                    numOfGreen += 1
+                    this.guessHistory.push("🟩")
+                    break
+                case "purple":
+                    numOfPurple += 1
+                    this.guessHistory.push("🟪")
+                    break
+            }
         }
-        else if (matchesGreen == true) {
-            // Green case
-            console.log("matches green");
-
+        this.guessHistory.push("NEWLINE")
+        if (numOfYellow == 3 || numOfBlue == 3 || numOfGreen == 3 || numOfPurple == 3) {
+            // alert: one away
+            console.log("one away...");
         }
-        else if (matchesPurple == true) {
-            // Purple case
-            console.log("matches purple");
-
+        else if (numOfYellow == 4) {
+            this.setCorrectlyGuessedCategory("yellow")
+            console.log("correct: yellow");
         }
+        else if (numOfBlue == 4) {
+            this.setCorrectlyGuessedCategory("blue")
+            console.log("correct blue");
+        }
+        else if (numOfGreen == 4) {
+            this.setCorrectlyGuessedCategory("green")
+            console.log("correct green");
+        }
+        else if (numOfPurple == 4) {
+            this.setCorrectlyGuessedCategory("purple")
+            console.log("correct Purple");
+        }
+        this.removeSelected()
     }
 }

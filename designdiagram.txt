@@ -25,3 +25,12 @@ Game class
     - Check answer
         - gets values of selected blocks
         - check if list of values
+
+
+get value of div thats selected
+get path of the value from the solutions object
+get color from path
+count the colors
+if 3 trigger one away
+if 4 trigger score or whatever
+also add to guess history
