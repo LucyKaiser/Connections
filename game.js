@@ -12,12 +12,14 @@ export default class Game {
     maxGuessAmount = 4
     categoriesGuessed = 0
     guessHistory = []
+    remainingValues
 
     constructor(puzzleName, puzzleAuthor, initialPuzzleStateObject, puzzleSolutionObject) {
         this.puzzleName = puzzleName
         this.puzzleAuthor = puzzleAuthor
         this.initialPuzzleStateObject = initialPuzzleStateObject
         this.puzzleSolutionObject = puzzleSolutionObject
+        this.remainingValues = Object.values(this.initialPuzzleStateObject)
     }
     getNumberOfSelectedBlocks() {
         let totalCount = 0
@@ -40,8 +42,25 @@ export default class Game {
             // console.log(currentDivName);
             let currentDiv = document.getElementById(currentDivName)
             currentDiv.innerText = this.initialPuzzleStateObject[key]
+
+            currentDiv.addEventListener("click", (e) => {
+                let currentDiv = document.getElementById(currentDivName)
+
+                if (currentDiv.classList.contains("selected")) {
+                    currentDiv.classList.remove("selected")
+                }
+
+                else if (this.getNumberOfSelectedBlocks() < 4) {
+                    currentDiv.classList.add("selected")
+                }
+            })
+
             i++
         }
+        let button = document.getElementById("submitButton")
+        button.addEventListener("click", () => {
+            this.submit()
+        })
     }
     getPathString(obj, value, currentPath = '') {
         for (const key in obj) {
@@ -89,11 +108,56 @@ export default class Game {
     }
 
     setCorrectlyGuessedCategory(color) {
-        let yellow = "#f9df6d"
-        let green = "#a0c35a"
-        let blue = "#b0c4ef"
-        let purple = "#ba81c5"
+        /*
+        pseudocode:
+        Get number of correct categories
+        based on that number, determine if its 1st 2nd ...
+        loop over items in the correct category and put them in the number category
+        duplicate the initial puzzle state object and remove items from it that are in the selected category list
+        loop through the rest of the blocks starting at 4*number of correct categories and set value to updated value list
+        if 4 correct categories call win condition
+        */
+        let backgroundColorToSet = ""
+        color == "yellow" ? backgroundColorToSet = "#f9df6d" : backgroundColorToSet
+        color == "green" ? backgroundColorToSet = "#a0c35a" : backgroundColorToSet
+        color == "blue" ? backgroundColorToSet = "#b0c4ef" : backgroundColorToSet
+        color == "purple" ? backgroundColorToSet = "#ba81c5" : backgroundColorToSet
         console.log(`setting correct category to ${color}`);
+        this.categoriesGuessed += 1
+        let categoryBlock = document.getElementById(`categoryBlock${this.categoriesGuessed}`)
+        console.log("categoryBlock ==> ", categoryBlock);
+        let x = (4*(this.categoriesGuessed-1))+1
+        for (let key in this.puzzleSolutionObject[color]) {
+            let currentDiv = document.getElementById(`div${x}`)
+            currentDiv.innerText = this.puzzleSolutionObject[color][key]
+            console.log("this.puzzleSolutionObject.yellow[key] ==> ", this.puzzleSolutionObject[color][key]);
+            x++
+            document.getElementById(`categoryBlock${this.categoriesGuessed}`).style.display = "flex"
+            document.getElementById(`categoryBlock${this.categoriesGuessed}`).style.backgroundColor = backgroundColorToSet
+        }
+        // let remainingValues = Object.values(this.initialPuzzleStateObject)
+        for (let key in this.initialPuzzleStateObject) {
+            for (let key2 in this.puzzleSolutionObject[color]) {
+                if (this.initialPuzzleStateObject[key] == this.puzzleSolutionObject[color][key2]) {
+                    let index = this.remainingValues.indexOf(this.puzzleSolutionObject[color][key2])
+                    this.remainingValues.splice(index, 1)
+                }
+            }
+        }
+        let i = 0
+        console.log(`looping from ${(4*(this.categoriesGuessed-1))+1} to ${(4*this.categoriesGuessed)}`);
+        for (let x = (4*(this.categoriesGuessed))+1; x <= 16; x++) {
+            let currentDiv = document.getElementById(`div${x}`)
+            currentDiv.innerText = this.remainingValues[i]
+            console.log(`setting div ${x} to ${this.remainingValues[i]}`);
+            i++
+        }
+        console.log(this.remainingValues);
+        let remainingValues = this.remainingValues
+        if (remainingValues.length == 0) {
+            console.log("win");
+            console.log(this.guessHistoryToString());
+        }
     }
 
     submit() {

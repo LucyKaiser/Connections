@@ -10,13 +10,12 @@ function test() {
                                             green:{green1:"5", green2:"6", green3:"7", green4:"8"},
                                             blue:{blue1:"9", blue2:"10", blue3:"11", blue4:"12"},
                                             purple:{purple1:"13", purple2:"14", purple3:"15", purple4:"16"}})
-    console.log(game.getNumberOfSelectedBlocks())
     game.initializeBoard()
     setTimeout(() => {
-        game.submit()
+        // game.submit()
     }, 10);
 }
-window.test = test
+test()
 
 // document.addEventListener("DOMContentLoaded", () => {
 //     const gameGrid = document.getElementById("gameGrid")
