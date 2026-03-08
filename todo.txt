@@ -1,0 +1,9 @@
+add guessing 3 out of 4 logic
+add prevent duplicate guesses
+add incorrect guess counter
+add reset button
+add puzzle browser
+    - list of links
+    - send to puzzle.html?id=1
+    - get id
+    - create game object based on id

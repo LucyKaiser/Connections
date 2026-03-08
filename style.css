@@ -150,7 +150,7 @@ html {
 #puzzleTitle{
 	line-height: 20%;
 }
-#submitButton {
+#submitButton, #copyResults {
 	border: none;
 	margin-top: 16px;
 	background-color: #474747;
@@ -158,11 +158,20 @@ html {
 	padding: 12px 20px;
 	border-radius: 100px;
 }
-#submitButton:active {
+#submitButton:active, #copyResults:active {
 	scale: 0.9;
 	transition: all 0.05s;
 }
 .submitWrapper {
 	display: flex;
 	justify-content:end;
+}
+#resultsWrapper {
+	display: none;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+}
+#copyResults {
+	margin-top: 0px !important;
 }

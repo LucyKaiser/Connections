@@ -59,7 +59,10 @@ export default class Game {
         }
         let button = document.getElementById("submitButton")
         button.addEventListener("click", () => {
-            this.submit()
+            console.log(this.getNumberOfSelectedBlocks());
+            if (this.getNumberOfSelectedBlocks() == 4) {
+                this.submit()
+            }
         })
     }
     getPathString(obj, value, currentPath = '') {
@@ -127,15 +130,28 @@ export default class Game {
         let categoryBlock = document.getElementById(`categoryBlock${this.categoriesGuessed}`)
         console.log("categoryBlock ==> ", categoryBlock);
         let x = (4*(this.categoriesGuessed-1))+1
+        // move correct selected boxes to highest avaiable row
         for (let key in this.puzzleSolutionObject[color]) {
             let currentDiv = document.getElementById(`div${x}`)
             currentDiv.innerText = this.puzzleSolutionObject[color][key]
             console.log("this.puzzleSolutionObject.yellow[key] ==> ", this.puzzleSolutionObject[color][key]);
             x++
-            document.getElementById(`categoryBlock${this.categoriesGuessed}`).style.display = "flex"
-            document.getElementById(`categoryBlock${this.categoriesGuessed}`).style.backgroundColor = backgroundColorToSet
         }
-        // let remainingValues = Object.values(this.initialPuzzleStateObject)
+        let currentCategoryBlock = document.getElementById(`categoryBlock${this.categoriesGuessed}`)
+        currentCategoryBlock.style.display = "flex"
+        currentCategoryBlock.style.backgroundColor = backgroundColorToSet
+        console.log(`${color}description`);
+        document.getElementById(`categoryTitle${this.categoriesGuessed}`).innerText = this.puzzleSolutionObject[`${color}Description`]
+        let valuesInCategory = ""
+        for (let key3 in this.puzzleSolutionObject[color]) {
+            valuesInCategory = valuesInCategory + this.puzzleSolutionObject[color][key3] + ", "
+        }
+        valuesInCategory = valuesInCategory.slice(0,-2)
+        console.log("valuesInCategory ==> ", valuesInCategory);
+        
+        document.getElementById(`categoryItems${this.categoriesGuessed}`).innerText = valuesInCategory
+
+        // remove values that were guessed from the remainingValues list
         for (let key in this.initialPuzzleStateObject) {
             for (let key2 in this.puzzleSolutionObject[color]) {
                 if (this.initialPuzzleStateObject[key] == this.puzzleSolutionObject[color][key2]) {
@@ -144,6 +160,7 @@ export default class Game {
                 }
             }
         }
+        // set the remaining blocks with the remaining values
         let i = 0
         console.log(`looping from ${(4*(this.categoriesGuessed-1))+1} to ${(4*this.categoriesGuessed)}`);
         for (let x = (4*(this.categoriesGuessed))+1; x <= 16; x++) {
@@ -157,6 +174,14 @@ export default class Game {
         if (remainingValues.length == 0) {
             console.log("win");
             console.log(this.guessHistoryToString());
+            document.getElementById("resultsWrapper").style.display = "flex"
+            let resultsString = String(`"${this.puzzleName}" by ${this.puzzleAuthor} \n${this.guessHistoryToString()}`)
+            console.log("resultsString ==> ", resultsString);
+            document.getElementById("resultsText").innerText = this.guessHistoryToString()
+            document.getElementById("copyResults").addEventListener("click", () => {
+                navigator.clipboard.writeText(resultsString)
+                document.getElementById("copyResults").innerText = "Copied!"
+            })
         }
     }
 
@@ -207,8 +232,8 @@ export default class Game {
         }
         this.guessHistory.push("NEWLINE")
         if (numOfYellow == 3 || numOfBlue == 3 || numOfGreen == 3 || numOfPurple == 3) {
-            // alert: one away
-            console.log("one away...");
+            // TODO: make this not use alert
+            console.log("one away");
         }
         else if (numOfYellow == 4) {
             this.setCorrectlyGuessedCategory("yellow")
