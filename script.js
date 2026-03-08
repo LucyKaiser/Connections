@@ -1,32 +1,126 @@
 import Game from './game.js';
 
-function test() {
-    console.log("initialized game object");
-    let game = new Game("Puzzle 1", "Lucy", {r1c1:"1", r2c1:"2", r3c1:"3", r4c1:"4",
-                                            r1c2:"5", r2c2:"6", r3c2:"7", r4c2:"8",
-                                            r1c3:"9", r2c3:"10", r3c3:"11", r4c3:"12",
-                                            r1c4:"13", r2c4:"14", r3c4:"15", r4c4:"16"},
-                                           {yellow:{yellow1:"1", yellow2:"2", yellow3:"3", yellow4:"4"}, yellowDescription:"yellow",
-                                            green:{green1:"5", green2:"6", green3:"7", green4:"8"}, greenDescription:"green",
-                                            blue:{blue1:"9", blue2:"10", blue3:"11", blue4:"12"}, blueDescription:"blue",
-                                            purple:{purple1:"13", purple2:"14", purple3:"15", purple4:"16"}, purpleDescription:"purple"})
-    game.initializeBoard()
-    setTimeout(() => {
-        // game.submit()
-    }, 10);
-}
-test()
+let id = window.location.href
+id = id.split("?id=").pop()
+console.log("id ==> ", id);
 
-// document.addEventListener("DOMContentLoaded", () => {
-//     const gameGrid = document.getElementById("gameGrid")
-//     for (let x = 0; x < 15; x++) {
-//         let divName = `div${x+1}`
-//         let targetDiv = document.getElementById(divName)
-//         targetDiv.addEventListener("click", () => {
-            
-//         })
-//     }
-// })
+
+const puzzleListObject = {
+    "1": {
+        name: "Stem Staff",
+        author: "Lucy",
+        difficulty: "1",
+        initialBoardState: {
+            r1c1: "1", r2c1: "2", r3c1: "3", r4c1: "4",
+            r1c2: "5", r2c2: "6", r3c2: "7", r4c2: "8",
+            r1c3: "9", r2c3: "10", r3c3: "11", r4c3: "12",
+            r1c4: "13", r2c4: "14", r3c4: "15", r4c4: "16"
+        },
+        solutionGroups: {
+            yellow: { yellow1: "1", yellow2: "2", yellow3: "3", yellow4: "4" }, yellowDescription: "yellow",
+            green: { green1: "5", green2: "6", green3: "7", green4: "8" }, greenDescription: "green",
+            blue: { blue1: "9", blue2: "10", blue3: "11", blue4: "12" }, blueDescription: "blue",
+            purple: { purple1: "13", purple2: "14", purple3: "15", purple4: "16" }, purpleDescription: "purple"
+        }
+    },
+    "2": {
+        name: "Puzzle 2",
+        author: "Lucy",
+        difficulty: "1",
+        initialBoardState: {
+            r1c1: "1", r2c1: "2", r3c1: "3", r4c1: "4",
+            r1c2: "5", r2c2: "6", r3c2: "7", r4c2: "8",
+            r1c3: "9", r2c3: "10", r3c3: "11", r4c3: "12",
+            r1c4: "13", r2c4: "14", r3c4: "15", r4c4: "16"
+        },
+        solutionGroups: {
+            yellow: { yellow1: "1", yellow2: "2", yellow3: "3", yellow4: "4" }, yellowDescription: "yellow",
+            green: { green1: "5", green2: "6", green3: "7", green4: "8" }, greenDescription: "green",
+            blue: { blue1: "9", blue2: "10", blue3: "11", blue4: "12" }, blueDescription: "blue",
+            purple: { purple1: "13", purple2: "14", purple3: "15", purple4: "16" }, purpleDescription: "purple"
+        }
+    },
+    "3": {
+        name: "Puzzle 3",
+        author: "Lucy",
+        difficulty: "1",
+        initialBoardState: {
+            r1c1: "1", r2c1: "2", r3c1: "3", r4c1: "4",
+            r1c2: "5", r2c2: "6", r3c2: "7", r4c2: "8",
+            r1c3: "9", r2c3: "10", r3c3: "11", r4c3: "12",
+            r1c4: "13", r2c4: "14", r3c4: "15", r4c4: "16"
+        },
+        solutionGroups: {
+            yellow: { yellow1: "1", yellow2: "2", yellow3: "3", yellow4: "4" }, yellowDescription: "yellow",
+            green: { green1: "5", green2: "6", green3: "7", green4: "8" }, greenDescription: "green",
+            blue: { blue1: "9", blue2: "10", blue3: "11", blue4: "12" }, blueDescription: "blue",
+            purple: { purple1: "13", purple2: "14", purple3: "15", purple4: "16" }, purpleDescription: "purple"
+        }
+    },
+    "4": {
+        name: "Puzzle 4",
+        author: "Lucy",
+        difficulty: "1",
+        initialBoardState: {
+            r1c1: "1", r2c1: "2", r3c1: "3", r4c1: "4",
+            r1c2: "5", r2c2: "6", r3c2: "7", r4c2: "8",
+            r1c3: "9", r2c3: "10", r3c3: "11", r4c3: "12",
+            r1c4: "13", r2c4: "14", r3c4: "15", r4c4: "16"
+        },
+        solutionGroups: {
+            yellow: { yellow1: "1", yellow2: "2", yellow3: "3", yellow4: "4" }, yellowDescription: "yellow",
+            green: { green1: "5", green2: "6", green3: "7", green4: "8" }, greenDescription: "green",
+            blue: { blue1: "9", blue2: "10", blue3: "11", blue4: "12" }, blueDescription: "blue",
+            purple: { purple1: "13", purple2: "14", purple3: "15", purple4: "16" }, purpleDescription: "purple"
+        }
+    }
+};
+
+
+window.currentGame = null
+
+function initializeGame(id) {
+    let gameConfig = puzzleListObject[id]
+    window.currentGame = new Game(gameConfig.name, gameConfig.author, gameConfig.difficulty, gameConfig.initialBoardState, gameConfig.solutionGroups)
+    window.currentGame.initializeBoard()
+}
+
+// Source - https://stackoverflow.com/a/494348
+// Posted by Crescent Fresh, modified by community. See post 'Timeline' for change history
+// Retrieved 2026-03-08, License - CC BY-SA 4.0
+
+function createElementFromHTML(htmlString) {
+  var a = document.createElement('a');
+  a.innerHTML = htmlString.trim();
+
+  // Change this to div.childNodes to support multiple top-level nodes.
+  return a.firstChild;
+}
+
+
+function setPuzzleList() {
+    let wrapper = document.getElementById("listWrapper")
+    for (let x = 1; x <= Object.keys(puzzleListObject).length; x++) {
+        const templateString = `<a href="/game.html?id=[ID]" class="puzzleLink">[PUZZLENAME] by [PUZZLEAUTHOR]. Difficulty [DIFFICULTY]/5</a>`
+        let constructedString = templateString
+        constructedString = constructedString.replace("[ID]", x)
+        constructedString = constructedString.replace("[PUZZLENAME]", puzzleListObject[x].name)
+        constructedString = constructedString.replace("[PUZZLEAUTHOR]", puzzleListObject[x].author)
+        constructedString = constructedString.replace("[PUZZLENAME]", puzzleListObject[x].name)
+        constructedString = constructedString.replace("[DIFFICULTY]", puzzleListObject[x].difficulty)
+        console.log(createElementFromHTML(constructedString));
+        wrapper.appendChild(createElementFromHTML(constructedString))
+
+    }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    try {initializeGame(id)} catch {}
+    if (document.getElementById("listWrapper")) {
+        setPuzzleList()
+    }
+})
+
 
 // let game = new Game("Puzzle 1", "Lucy", {r1c1:"1", r2c1:"2", r3c1:"3", r4c1:"4",
 //                                         r1c2:"5", r2c2:"6", r3c2:"7", r4c2:"8",

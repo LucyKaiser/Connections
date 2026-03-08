@@ -16,6 +16,7 @@
     cursor: pointer;
     border-radius: 8px;
 	font-weight: bold;
+	overflow-wrap: break-word;
 }
 .gridCell:hover {
     background-color: #bcbdb7;
@@ -150,7 +151,7 @@ html {
 #puzzleTitle{
 	line-height: 20%;
 }
-#submitButton, #copyResults {
+.button {
 	border: none;
 	margin-top: 16px;
 	background-color: #474747;
@@ -158,9 +159,10 @@ html {
 	padding: 12px 20px;
 	border-radius: 100px;
 }
-#submitButton:active, #copyResults:active {
+.clickable:active {
 	scale: 0.9;
 	transition: all 0.05s;
+	cursor: pointer;
 }
 .submitWrapper {
 	display: flex;

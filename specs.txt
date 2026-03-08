@@ -1,0 +1,4 @@
+title cant be more than 24 characters
+author cant be more than 50 characters
+category title cant be more than 33 characters 
+block values max word legnth of 11 characters max 4 word

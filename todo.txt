@@ -7,3 +7,12 @@ add puzzle browser
     - send to puzzle.html?id=1
     - get id
     - create game object based on id
+
+script.js
+    - Function get list elements
+        - iterate through list of game objects
+        - return string containing list of paragraph elements with name and author
+    = on list element click
+        - set location to game.html?id=_
+    = switch case
+        - based on id determine which game object to use

@@ -1,0 +1,32 @@
+body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #fff0f0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#listWrapper {
+  display: flex;
+  flex-direction: column;
+  border: 4px solid #c29b9b;
+  padding: 32px;
+  padding-top: 24px;
+  background-color: #fffbfb;
+  border-radius: 16px;
+  align-items: center;
+}
+#listWrapper a {
+  font-weight: bold;
+  color: #222222;
+  border: 2px solid #c29b9b;
+  padding: 2px;
+  border-radius: 4px;
+  margin-top: 8px;
+  width: -moz-fit-content;
+  width: fit-content;
+}/*# sourceMappingURL=list.css.map */

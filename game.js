@@ -11,14 +11,16 @@ export default class Game {
                            purple:{purple1:"", purple2:"", purple3:"", purple4:""}, purpleDescription:""}
     maxGuessAmount = 4
     categoriesGuessed = 0
+    difficulty
     guessHistory = []
     remainingValues
 
-    constructor(puzzleName, puzzleAuthor, initialPuzzleStateObject, puzzleSolutionObject) {
+    constructor(puzzleName, puzzleAuthor, difficulty, initialPuzzleStateObject, puzzleSolutionObject) {
         this.puzzleName = puzzleName
         this.puzzleAuthor = puzzleAuthor
         this.initialPuzzleStateObject = initialPuzzleStateObject
         this.puzzleSolutionObject = puzzleSolutionObject
+        this.difficulty = difficulty
         this.remainingValues = Object.values(this.initialPuzzleStateObject)
     }
     getNumberOfSelectedBlocks() {
