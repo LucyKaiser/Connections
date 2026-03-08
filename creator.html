@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .small {
+            height: 1.4em;
+            resize: none;
+            width: 12em;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+        .fit-content {
+            width: fit-content;
+        }
+        .sideBySide {
+            display: flex;
+        }
+        .header {
+            margin-bottom: 0px;
+        }
+    </style>
+    <script>
+        function valById(id) {
+        // console.log("id ==> ", (id));
+        // console.log("id.toLowerCase() ==> ", id.toLowerCase());
+        // console.log("document.getElementById(id.toLowerCase()) ==> ", document.getElementById(id.toLowerCase()));
+        // console.log("document.getElementById(id.toLowerCase()).value ==> ", document.getElementById(id.toLowerCase()).value);
+            return document.getElementById(id.toLowerCase()).value
+        }
+        // Source - https://stackoverflow.com/a/2450976
+        // Posted by ChristopheD, modified by community. See post 'Timeline' for change history
+        // Retrieved 2026-03-08, License - CC BY-SA 4.0
+
+        function shuffle(array) {
+        let currentIndex = array.length;
+
+        // While there remain elements to shuffle...
+        while (currentIndex != 0) {
+
+            // Pick a remaining element...
+            let randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex--;
+
+            // And swap it with the current element.
+            [array[currentIndex], array[randomIndex]] = [
+            array[randomIndex], array[currentIndex]];
+        }
+        }
+
+        const templateString = `
+"n": {
+    name: "[NAME]",
+    author: "[AUTHOR]",
+    difficulty: "[DIFFICULTY]",
+    initialBoardState: {
+        r1c1: "[R1C1]", r2c1: "[R2C1]", r3c1: "[R3C1]", r4c1: "[R4C1]",
+        r1c2: "[R1C2]", r2c2: "[R2C2]", r3c2: "[R3C2]", r4c2: "[R4C2]",
+        r1c3: "[R1C3]", r2c3: "[R2C3]", r3c3: "[R3C3]", r4c3: "[R4C3]",
+        r1c4: "[R1C4]", r2c4: "[R2C4]", r3c4: "[R3C4]", r4c4: "[R4C4]"
+    },
+    solutionGroups: {
+        yellow: { yellow1: "[YELLOW1]", yellow2: "[YELLOW2]", yellow3: "[YELLOW3]", yellow4: "[YELLOW4]" }, yellowDescription: "[YELLOWDESCRIPTION]",
+        green: { green1: "[GREEN1]", green2: "[GREEN2]", green3: "[GREEN3]", green4: "[GREEN4]" }, greenDescription: "[GREENDESCRIPTION]",
+        blue: { blue1: "[BLUE1]", blue2: "[BLUE2]", blue3: "[BLUE3]", blue4: "[BLUE4]" }, blueDescription: "[BLUEDESCRIPTION]",
+        purple: { purple1: "[PURPLE1]", purple2: "[PURPLE2]", purple3: "[PURPLE3]", purple4: "[PURPLE4]" }, purpleDescription: "[PURPLEDESCRIPTION]"
+    }
+},`
+        function generateCode() {
+        let constructedString = templateString
+        constructedString = constructedString.replace("[NAME]", valById("NAME"))
+        constructedString = constructedString.replace("[AUTHOR]", valById("AUTHOR"))
+        constructedString = constructedString.replace("[DIFFICULTY]", valById("DIFFICULTY"))
+        constructedString = constructedString.replace("[YELLOW1]", valById("YELLOW1"))
+        constructedString = constructedString.replace("[YELLOW2]", valById("YELLOW2"))
+        constructedString = constructedString.replace("[YELLOW3]", valById("YELLOW3"))
+        constructedString = constructedString.replace("[YELLOW4]", valById("YELLOW4"))
+        constructedString = constructedString.replace("[BLUE1]", valById("BLUE1"))
+        constructedString = constructedString.replace("[BLUE2]", valById("BLUE2"))
+        constructedString = constructedString.replace("[BLUE3]", valById("BLUE3"))
+        constructedString = constructedString.replace("[BLUE4]", valById("BLUE4"))
+        constructedString = constructedString.replace("[GREEN1]", valById("GREEN1"))
+        constructedString = constructedString.replace("[GREEN2]", valById("GREEN2"))
+        constructedString = constructedString.replace("[GREEN3]", valById("GREEN3"))
+        constructedString = constructedString.replace("[GREEN4]", valById("GREEN4"))
+        constructedString = constructedString.replace("[PURPLE1]", valById("PURPLE1"))
+        constructedString = constructedString.replace("[PURPLE2]", valById("PURPLE2"))
+        constructedString = constructedString.replace("[PURPLE3]", valById("PURPLE3"))
+        constructedString = constructedString.replace("[PURPLE4]", valById("PURPLE4"))
+        if (document.getElementById("autoFill").checked == false) {
+            for (let x = 1; x <= 4; x++) {
+                for (let i = 1; i <= 4; i++) {
+                    // console.log(`r${x}c${i}`);
+                    constructedString = constructedString.replace(`[R${x}C${i}]`, valById(`R${x}C${i}`))
+                }
+            }
+        } else {
+            // auto fill
+            let rowColumnArray = []
+            for (let x = 1; x <= 4; x++) {
+                for (let i = 1; i <= 4; i++) {
+                    // console.log(`r${x}c${i}`);
+                    rowColumnArray.push(`[R${x}C${i}]`)
+                }
+            }
+            let colors = ["yellow", "blue", "green", "purple"]
+            let numbers = [1,2,3,4]
+            let solutionIdsArray = []
+            for (let x = 0; x < 4; x++) {
+                for (let i = 0; i < 4; i++) {
+                    // console.log(`r${x}c${i}`);
+                    solutionIdsArray.push(`${colors[x]}${numbers[i]}`)
+                }
+            }
+            shuffle(rowColumnArray)
+            shuffle(solutionIdsArray)
+            console.log(rowColumnArray, solutionIdsArray);
+            for (let x = 0; x < 16; x++) {
+                console.log("solutionIdsArray[x] ==> ", solutionIdsArray[x]);
+                console.log("rowColumnArray[x] ==> ", rowColumnArray[x]);
+                constructedString = constructedString.replace(rowColumnArray[x], valById(solutionIdsArray[x]))
+            }
+
+        }
+        
+        constructedString = constructedString.replace("[YELLOWDESCRIPTION]", valById("YELLOWDESCRIPTION"))
+        constructedString = constructedString.replace("[BLUEDESCRIPTION]", valById("BLUEDESCRIPTION"))
+        constructedString = constructedString.replace("[GREENDESCRIPTION]", valById("GREENDESCRIPTION"))
+        constructedString = constructedString.replace("[PURPLEDESCRIPTION]", valById("PURPLEDESCRIPTION"))
+        console.log(constructedString);
+        document.getElementById("code").innerText = constructedString
+        }
+    </script>
+</head>
+<body>
+    <textarea name="name" id="name" placeholder="Puzzle name" class="small"></textarea>
+    <textarea name="author" id="author" placeholder="Author" class="small"></textarea>
+    <textarea name="difficulty" id="difficulty" placeholder="Difficulty (1-5)" class="small"></textarea>
+    <h1 class="fit-content header" >Initial Board State</h1>
+    <div class="sideBySide">
+        <p class="header">Auto fill?</p>
+        <input type="checkbox" name="autoFill" id="autoFill" class="fit-content header">
+    </div>
+    <div class="row1">
+        <textarea name="" id="r1c1"></textarea>
+        <textarea name="" id="r2c1"></textarea>
+        <textarea name="" id="r3c1"></textarea>
+        <textarea name="" id="r4c1"></textarea>
+    </div>
+    <div class="row2">
+        <textarea name="" id="r1c2"></textarea>
+        <textarea name="" id="r2c2"></textarea>
+        <textarea name="" id="r3c2"></textarea>
+        <textarea name="" id="r4c2"></textarea>
+    </div>
+    <div class="row3">
+        <textarea name="" id="r1c3"></textarea>
+        <textarea name="" id="r2c3"></textarea>
+        <textarea name="" id="r3c3"></textarea>
+        <textarea name="" id="r4c3"></textarea>
+    </div>
+    <div class="row4">
+        <textarea name="" id="r1c4"></textarea>
+        <textarea name="" id="r2c4"></textarea>
+        <textarea name="" id="r3c4"></textarea>
+        <textarea name="" id="r4c4"></textarea>
+    </div>
+    <h1 class="header">Solutions</h1>
+    <div class="yellow">
+        <p>Yellow</p>
+        <textarea name="" id="yellow1"></textarea>
+        <textarea name="" id="yellow2"></textarea>
+        <textarea name="" id="yellow3"></textarea>
+        <textarea name="" id="yellow4"></textarea>
+        <textarea name="" id="yellowdescription" placeholder="Yellow Description"></textarea>
+    </div>
+    <div class="green">
+        <p>Green</p>
+        <textarea name="" id="green1"></textarea>
+        <textarea name="" id="green2"></textarea>
+        <textarea name="" id="green3"></textarea>
+        <textarea name="" id="green4"></textarea>
+        <textarea name="" id="greendescription" placeholder="Green Description"></textarea>
+    </div>
+    <div class="blue">
+        <p>Blue</p>
+        <textarea name="" id="blue1"></textarea>
+        <textarea name="" id="blue2"></textarea>
+        <textarea name="" id="blue3"></textarea>
+        <textarea name="" id="blue4"></textarea>
+        <textarea name="" id="bluedescription" placeholder="Blue Description"></textarea>
+    </div>
+    <div class="purple">
+        <p>Purple</p>
+        <textarea name="" id="purple1"></textarea>
+        <textarea name="" id="purple2"></textarea>
+        <textarea name="" id="purple3"></textarea>
+        <textarea name="" id="purple4"></textarea>
+        <textarea name="" id="purpledescription" placeholder="Purple Description"></textarea>
+    </div>
+    <button class="fit-content" onclick="generateCode()">Generate code</button>
+    <pre id="code"></pre>
+</body>
+</html>

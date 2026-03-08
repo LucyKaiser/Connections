@@ -9,18 +9,18 @@ const puzzleListObject = {
     "1": {
         name: "Stem Staff",
         author: "Lucy",
-        difficulty: "1",
+        difficulty: "3",
         initialBoardState: {
-            r1c1: "1", r2c1: "2", r3c1: "3", r4c1: "4",
-            r1c2: "5", r2c2: "6", r3c2: "7", r4c2: "8",
-            r1c3: "9", r2c3: "10", r3c3: "11", r4c3: "12",
-            r1c4: "13", r2c4: "14", r3c4: "15", r4c4: "16"
+            r1c1: "WILLIAMS", r2c1: "HA", r3c1: "CURRAN", r4c1: "ROBINSON",
+            r1c2: "JACOB", r2c2: "SEARS", r3c2: "POTTS", r4c2: "PAUL",
+            r1c3: "HARRIS", r2c3: "BONE", r3c3: "CARTER", r4c3: "BHANDARI",
+            r1c4: "SHORES", r2c4: "HILL", r3c4: "FISHER", r4c4: "CHEN"
         },
         solutionGroups: {
-            yellow: { yellow1: "1", yellow2: "2", yellow3: "3", yellow4: "4" }, yellowDescription: "yellow",
-            green: { green1: "5", green2: "6", green3: "7", green4: "8" }, greenDescription: "green",
-            blue: { blue1: "9", blue2: "10", blue3: "11", blue4: "12" }, blueDescription: "blue",
-            purple: { purple1: "13", purple2: "14", purple3: "15", purple4: "16" }, purpleDescription: "purple"
+            yellow: { yellow1: "CURRAN", yellow2: "FISHER", yellow3: "HA", yellow4: "SEARS" }, yellowDescription: "ADMINISTRATORS",
+            green: { green1: "BHANDARI", green2: "CHEN", green3: "HARRIS", green4: "ROBINSON" }, greenDescription: "LANGUAGE TEACHERS",
+            blue: { blue1: "BONE", blue2: "HILL", blue3: "POTTS", blue4: "SHORES" }, blueDescription: "LAST NAMES THAT ARE ALSO NOUNS",
+            purple: { purple1: "CARTER", purple2: "JACOB", purple3: "PAUL", purple4: "WILLIAMS" }, purpleDescription: "LAST NAMES THAT COULD BE FIRST NAMES"
         }
     },
     "2": {
