@@ -166,7 +166,12 @@ html {
 }
 .submitWrapper {
 	display: flex;
-	justify-content:end;
+	justify-content:space-between;
+	align-items: center;
+}
+#alert {
+	color: red;
+	display: none;
 }
 #resultsWrapper {
 	display: none;

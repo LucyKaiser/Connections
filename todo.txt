@@ -16,3 +16,6 @@ script.js
         - set location to game.html?id=_
     = switch case
         - based on id determine which game object to use
+
+
+

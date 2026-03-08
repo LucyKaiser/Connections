@@ -234,8 +234,11 @@ export default class Game {
         }
         this.guessHistory.push("NEWLINE")
         if (numOfYellow == 3 || numOfBlue == 3 || numOfGreen == 3 || numOfPurple == 3) {
-            // TODO: make this not use alert
-            console.log("one away");
+            let alertText = document.getElementById("alert")
+            alertText.style.display = "block"
+            setTimeout(() => {
+                alertText.style.display = "none"
+            }, 1000);
         }
         else if (numOfYellow == 4) {
             this.setCorrectlyGuessedCategory("yellow")
@@ -252,6 +255,12 @@ export default class Game {
         else if (numOfPurple == 4) {
             this.setCorrectlyGuessedCategory("purple")
             console.log("correct Purple");
+        }
+        else {
+            let currentIncorrect = document.getElementById("incorrectCounter").innerText
+            console.log("currentIncorrect ==> ", currentIncorrect);
+            
+            document.getElementById("incorrectCounter").innerText = Number(currentIncorrect) + 1
         }
         this.removeSelected()
     }

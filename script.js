@@ -24,54 +24,20 @@ const puzzleListObject = {
         }
     },
     "2": {
-        name: "Puzzle 2",
+        name: "1, 2, 3, ...",
         author: "Lucy",
-        difficulty: "1",
+        difficulty: "2",
         initialBoardState: {
-            r1c1: "1", r2c1: "2", r3c1: "3", r4c1: "4",
-            r1c2: "5", r2c2: "6", r3c2: "7", r4c2: "8",
-            r1c3: "9", r2c3: "10", r3c3: "11", r4c3: "12",
-            r1c4: "13", r2c4: "14", r3c4: "15", r4c4: "16"
+            r1c1: "STEVE", r2c1: "NOTEPAD", r3c1: "PRUIM", r4c1: "MAIN",
+            r1c2: "MARK", r2c2: "BODY", r3c2: "CALCULATOR", r4c2: "AGENT",
+            r1c3: "MARIO", r2c3: "HALLOWEEN", r3c3: "HEAD", r4c3: "CORTANA",
+            r1c4: "LINK", r2c4: "CHRISTMAS", r3c4: "VALENTINES", r4c4: "FILE EXPLORER"
         },
         solutionGroups: {
-            yellow: { yellow1: "1", yellow2: "2", yellow3: "3", yellow4: "4" }, yellowDescription: "yellow",
-            green: { green1: "5", green2: "6", green3: "7", green4: "8" }, greenDescription: "green",
-            blue: { blue1: "9", blue2: "10", blue3: "11", blue4: "12" }, blueDescription: "blue",
-            purple: { purple1: "13", purple2: "14", purple3: "15", purple4: "16" }, purpleDescription: "purple"
-        }
-    },
-    "3": {
-        name: "Puzzle 3",
-        author: "Lucy",
-        difficulty: "1",
-        initialBoardState: {
-            r1c1: "1", r2c1: "2", r3c1: "3", r4c1: "4",
-            r1c2: "5", r2c2: "6", r3c2: "7", r4c2: "8",
-            r1c3: "9", r2c3: "10", r3c3: "11", r4c3: "12",
-            r1c4: "13", r2c4: "14", r3c4: "15", r4c4: "16"
-        },
-        solutionGroups: {
-            yellow: { yellow1: "1", yellow2: "2", yellow3: "3", yellow4: "4" }, yellowDescription: "yellow",
-            green: { green1: "5", green2: "6", green3: "7", green4: "8" }, greenDescription: "green",
-            blue: { blue1: "9", blue2: "10", blue3: "11", blue4: "12" }, blueDescription: "blue",
-            purple: { purple1: "13", purple2: "14", purple3: "15", purple4: "16" }, purpleDescription: "purple"
-        }
-    },
-    "4": {
-        name: "Puzzle 4",
-        author: "Lucy",
-        difficulty: "1",
-        initialBoardState: {
-            r1c1: "1", r2c1: "2", r3c1: "3", r4c1: "4",
-            r1c2: "5", r2c2: "6", r3c2: "7", r4c2: "8",
-            r1c3: "9", r2c3: "10", r3c3: "11", r4c3: "12",
-            r1c4: "13", r2c4: "14", r3c4: "15", r4c4: "16"
-        },
-        solutionGroups: {
-            yellow: { yellow1: "1", yellow2: "2", yellow3: "3", yellow4: "4" }, yellowDescription: "yellow",
-            green: { green1: "5", green2: "6", green3: "7", green4: "8" }, greenDescription: "green",
-            blue: { blue1: "9", blue2: "10", blue3: "11", blue4: "12" }, blueDescription: "blue",
-            purple: { purple1: "13", purple2: "14", purple3: "15", purple4: "16" }, purpleDescription: "purple"
+            yellow: { yellow1: "CALCULATOR", yellow2: "CORTANA", yellow3: "FILE EXPLORER", yellow4: "NOTEPAD" }, yellowDescription: "PRE INSTALLED WINDOWS APPS",
+            green: { green1: "BODY", green2: "HEAD", green3: "MAIN", green4: "MARK" }, greenDescription: "HTML TAGS",
+            blue: { blue1: "CHRISTMAS", blue2: "HALLOWEEN", blue3: "PRUIM", blue4: "VALENTINES" }, blueDescription: "HOLIDAYS",
+            purple: { purple1: "AGENT", purple2: "LINK", purple3: "MARIO", purple4: "STEVE" }, purpleDescription: "FAMOUS VIDEO GAME CHARACTERS"
         }
     }
 };
