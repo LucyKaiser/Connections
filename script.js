@@ -26,7 +26,7 @@ const puzzleListObject = {
     "2": {
         name: "1, 2, 3, ...",
         author: "Lucy",
-        difficulty: "2",
+        difficulty: "3",
         initialBoardState: {
             r1c1: "STEVE", r2c1: "NOTEPAD", r3c1: "PRUIM", r4c1: "MAIN",
             r1c2: "MARK", r2c2: "BODY", r3c2: "CALCULATOR", r4c2: "AGENT",
@@ -39,7 +39,41 @@ const puzzleListObject = {
             blue: { blue1: "CHRISTMAS", blue2: "HALLOWEEN", blue3: "PRUIM", blue4: "VALENTINES" }, blueDescription: "HOLIDAYS",
             purple: { purple1: "AGENT", purple2: "LINK", purple3: "MARIO", purple4: "STEVE" }, purpleDescription: "FAMOUS VIDEO GAME CHARACTERS"
         }
-    }
+    },
+    "3": {
+        name: "5 in a Category?",
+        author: "lucy",
+        difficulty: "4",
+        initialBoardState: {
+            r1c1: "NARRATOR", r2c1: "GUPPY", r3c1: "SURGEI", r4c1: "BITES",
+            r1c2: "CHEKOV", r2c2: "CATFISH", r3c2: "GERMAN", r4c2: "DROPOUT",
+            r1c3: "MAAD", r2c3: "SALMON", r3c3: "MUSLIM", r4c3: "TROUT",
+            r1c4: "HERRING", r2c4: "CARTER", r3c4: "IGOR", r4c4: "CLIFF"
+        },
+        solutionGroups: {
+            yellow: { yellow1: "CATFISH", yellow2: "GUPPY", yellow3: "SALMON", yellow4: "TROUT" }, yellowDescription: "FRESHWATER FISH",
+            green: { green1: "BITES", green2: "CARTER", green3: "DROPOUT", green4: "MAAD" }, greenDescription: "PARTS OF GRAMMY NOMINATED RAP ALBUMS",
+            blue: { blue1: "CHEKOV", blue2: "CLIFF", blue3: "HERRING", blue4: "NARRATOR" }, blueDescription: "LITERARY DEVICES MISSING A WORD",
+            purple: { purple1: "GERMAN", purple2: "IGOR", purple3: "MUSLIM", purple4: "SURGEI" }, purpleDescription: "FIRST NAMES OF RUSSIAN POLITICANS "
+        }
+    },
+    "4": {
+        name: "Straightforward",
+        author: "Lucy and Viv",
+        difficulty: "2",
+        initialBoardState: {
+            r1c1: "LUMBER", r2c1: "TRUE LOVE", r3c1: "HERSHEY", r4c1: "SCHOOL",
+            r1c2: "FRENCH", r2c2: "FUGI", r3c2: "GAGGLE", r4c2: "MURDER",
+            r1c3: "TIP", r2c3: "SHUN", r3c3: "FIREARM", r4c3: "PRIDE",
+            r1c4: "HONEYCRISP", r2c4: "ENVY", r3c4: "DEATH", r4c4: "GALA"
+        },
+        solutionGroups: {
+            yellow: { yellow1: "GAGGLE", yellow2: "MURDER", yellow3: "SCHOOL", yellow4: "PRIDE" }, yellowDescription: "ANIMAL GROUPS",
+            green: { green1: "GALA", green2: "ENVY", green3: "FUGI", green4: "HONEYCRISP" }, greenDescription: "TYPES OF APPLES",
+            blue: { blue1: "FRENCH", blue2: "TRUE LOVE", blue3: "HERSHEY", blue4: "DEATH" }, blueDescription: "TYPES OF KISSES",
+            purple: { purple1: "FIREARM", purple2: "LUMBER", purple3: "SHUN", purple4: "TIP" }, purpleDescription: "BODY PARTS WITH A LETTER CHANGED"
+        }
+    },
 };
 
 
@@ -67,7 +101,7 @@ function createElementFromHTML(htmlString) {
 function setPuzzleList() {
     let wrapper = document.getElementById("listWrapper")
     for (let x = 1; x <= Object.keys(puzzleListObject).length; x++) {
-        const templateString = `<a href="/game.html?id=[ID]" class="puzzleLink">[PUZZLENAME] by [PUZZLEAUTHOR]. Difficulty [DIFFICULTY]/5</a>`
+        const templateString = `<a href="/game.html?id=[ID]" class="puzzleLink">[PUZZLENAME] by [PUZZLEAUTHOR] | Difficulty [DIFFICULTY]/5</a>`
         let constructedString = templateString
         constructedString = constructedString.replace("[ID]", x)
         constructedString = constructedString.replace("[PUZZLENAME]", puzzleListObject[x].name)

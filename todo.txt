@@ -19,3 +19,5 @@ script.js
 
 
 
+add prevent duplicate guesses
+fix mobile sizing
