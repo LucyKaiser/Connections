@@ -66,6 +66,9 @@ export default class Game {
                 this.submit()
             }
         })
+        document.getElementById("clearAll").addEventListener("click", () => {
+            this.removeSelected()
+        })
     }
     getPathString(obj, value, currentPath = '') {
         for (const key in obj) {
@@ -238,7 +241,7 @@ export default class Game {
             alertText.style.display = "block"
             setTimeout(() => {
                 alertText.style.display = "none"
-            }, 1000);
+            }, 2000);
         }
         else if (numOfYellow == 4) {
             this.setCorrectlyGuessedCategory("yellow")

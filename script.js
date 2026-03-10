@@ -54,24 +54,41 @@ const puzzleListObject = {
             yellow: { yellow1: "CATFISH", yellow2: "GUPPY", yellow3: "SALMON", yellow4: "TROUT" }, yellowDescription: "FRESHWATER FISH",
             green: { green1: "BITES", green2: "CARTER", green3: "DROPOUT", green4: "MAAD" }, greenDescription: "PARTS OF GRAMMY NOMINATED RAP ALBUMS",
             blue: { blue1: "CHEKOV", blue2: "CLIFF", blue3: "HERRING", blue4: "NARRATOR" }, blueDescription: "LITERARY DEVICES MISSING A WORD",
-            purple: { purple1: "GERMAN", purple2: "IGOR", purple3: "MUSLIM", purple4: "SURGEI" }, purpleDescription: "FIRST NAMES OF RUSSIAN POLITICANS "
+            purple: { purple1: "GERMAN", purple2: "IGOR", purple3: "MUSLIM", purple4: "SURGEI" }, purpleDescription: "FIRST NAMES OF RUSSIAN POLITICIANS "
         }
     },
     "4": {
-        name: "Straightforward",
+        name: "Pandemonium",
         author: "Lucy and Viv",
-        difficulty: "2",
+        difficulty: "4",
         initialBoardState: {
             r1c1: "LUMBER", r2c1: "TRUE LOVE", r3c1: "HERSHEY", r4c1: "SCHOOL",
-            r1c2: "FRENCH", r2c2: "FUGI", r3c2: "GAGGLE", r4c2: "MURDER",
+            r1c2: "FRENCH", r2c2: "FUJI", r3c2: "GAGGLE", r4c2: "MURDER",
             r1c3: "TIP", r2c3: "SHUN", r3c3: "FIREARM", r4c3: "PRIDE",
             r1c4: "HONEYCRISP", r2c4: "ENVY", r3c4: "DEATH", r4c4: "GALA"
         },
         solutionGroups: {
             yellow: { yellow1: "GAGGLE", yellow2: "MURDER", yellow3: "SCHOOL", yellow4: "PRIDE" }, yellowDescription: "ANIMAL GROUPS",
-            green: { green1: "GALA", green2: "ENVY", green3: "FUGI", green4: "HONEYCRISP" }, greenDescription: "TYPES OF APPLES",
+            green: { green1: "GALA", green2: "ENVY", green3: "FUJI", green4: "HONEYCRISP" }, greenDescription: "TYPES OF APPLES",
             blue: { blue1: "FRENCH", blue2: "TRUE LOVE", blue3: "HERSHEY", blue4: "DEATH" }, blueDescription: "TYPES OF KISSES",
             purple: { purple1: "FIREARM", purple2: "LUMBER", purple3: "SHUN", purple4: "TIP" }, purpleDescription: "BODY PARTS WITH A LETTER CHANGED"
+        }
+    },
+    "5": {
+        name: "Ms. Direction",
+        author: "Lucy",
+        difficulty: "1",
+        initialBoardState: {
+            r1c1: "SUPERMAN", r2c1: "DEADPOOL", r3c1: "LETTER", r4c1: "WOLVERINE",
+            r1c2: "BIRD", r2c2: "BIC", r3c2: "HULK", r4c2: "NOVEL",
+            r1c3: "PILOT", r2c3: "ESSAY", r3c3: "FLIES", r4c3: "SHARPIE",
+            r1c4: "PAPERMATE", r2c4: "PLANE", r3c4: "CAPTAIN AMERICA", r4c4: "POEM"
+        },
+        solutionGroups: {
+            yellow: { yellow1: "HULK", yellow2: "WOLVERINE", yellow3: "CAPTAIN AMERICA", yellow4: "DEADPOOL" }, yellowDescription: "MARVEL SUPERHEROS",
+            green: { green1: "POEM", green2: "ESSAY", green3: "LETTER", green4: "NOVEL" }, greenDescription: "TYPES OF WRITING",
+            blue: { blue1: "BIRD", blue2: "PLANE", blue3: "FLIES", blue4: "SUPERMAN" }, blueDescription: "THINGS THAT FLY",
+            purple: { purple1: "PILOT", purple2: "BIC", purple3: "SHARPIE", purple4: "PAPERMATE" }, purpleDescription: "PEN BRANDS"
         }
     },
 };
