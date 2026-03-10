@@ -75,7 +75,7 @@ const puzzleListObject = {
         }
     },
     "5": {
-        name: "Ms. Direction",
+        name: "Don't Rush It",
         author: "Lucy",
         difficulty: "1",
         initialBoardState: {
@@ -89,6 +89,23 @@ const puzzleListObject = {
             green: { green1: "POEM", green2: "ESSAY", green3: "LETTER", green4: "NOVEL" }, greenDescription: "TYPES OF WRITING",
             blue: { blue1: "BIRD", blue2: "PLANE", blue3: "FLIES", blue4: "SUPERMAN" }, blueDescription: "THINGS THAT FLY",
             purple: { purple1: "PILOT", purple2: "BIC", purple3: "SHARPIE", purple4: "PAPERMATE" }, purpleDescription: "PEN BRANDS"
+        }
+    },
+    "6": {
+        name: "Number 6",
+        author: "Lucy",
+        difficulty: "2",
+        initialBoardState: {
+            r1c1: "5.2", r2c1: "31", r3c1: "4", r4c1: "25",
+            r1c2: "2.6", r2c2: "41.01", r3c2: "2", r4c2: "49",
+            r1c3: "89", r2c3: "100", r3c3: "1.8", r4c3: "8",
+            r1c4: "43", r2c4: "36", r3c4: "6", r4c4: "13"
+        },
+        solutionGroups: {
+            yellow: { yellow1: "2", yellow2: "4", yellow3: "6", yellow4: "8" }, yellowDescription: "FIRST 4 EVEN NUMBERS",
+            green: { green1: "25", green2: "36", green3: "49", green4: "100" }, greenDescription: "PERFECT SQUARES",
+            blue: { blue1: "5.2", blue2: "1.8", blue3: "41.01", blue4: "2.6" }, blueDescription: "DECIMALS",
+            purple: { purple1: "31", purple2: "43", purple3: "13", purple4: "89" }, purpleDescription: "PRIME NUMBERS"
         }
     },
 };
