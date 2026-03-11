@@ -108,6 +108,23 @@ const puzzleListObject = {
             purple: { purple1: "31", purple2: "43", purple3: "13", purple4: "89" }, purpleDescription: "PRIME NUMBERS"
         }
     },
+    "7": {
+        name: "Morning Routine",
+        author: "Lucy",
+        difficulty: "4",
+        initialBoardState: {
+            r1c1: "MAKE UP", r2c1: "SET", r3c1: "CONCEAL", r4c1: "GLOSS",
+            r1c2: "JEWELRY", r2c2: "PAINT", r3c2: "VEIL", r4c2: "MASK",
+            r1c3: "BURY", r2c3: "FABRICATE", r3c3: "BASEBALL", r4c3: "SMOOTH",
+            r1c4: "LIE", r2c4: "DECK", r3c4: "MATTE", r4c4: "FIB"
+        },
+        solutionGroups: {
+            yellow: { yellow1: "MAKE UP", yellow2: "FABRICATE", yellow3: "FIB", yellow4: "LIE" }, yellowDescription: "NOT TRUE",
+            green: { green1: "CONCEAL", green2: "BURY", green3: "VEIL", green4: "MASK" }, greenDescription: "HIDE",
+            blue: { blue1: "GLOSS", blue2: "MATTE", blue3: "PAINT", blue4: "SMOOTH" }, blueDescription: "SURFACE FINISHES",
+            purple: { purple1: "SET", purple2: "DECK", purple3: "BASEBALL", purple4: "JEWELRY" }, purpleDescription: "FEATURING DIAMONDS"
+        }
+    },
 };
 
 
