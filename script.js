@@ -159,6 +159,23 @@ const puzzleListObject = {
             purple: { purple1: "EIGHT", purple2: "FATHER", purple3: "HOURGLASS", purple4: "HIDDEN" }, purpleDescription: "FIGURES"
         }
     },
+    "10": {
+    name: "Trivia Night",
+        author: "Lucy, Marek, and Derek",
+        difficulty: "5",
+        initialBoardState: {
+            r1c1: "ENAMEL", r2c1: "LOCATION", r3c1: "ELEPHANT", r4c1: "BOARD",
+            r1c2: "TOUCH", r2c2: "LUCKY", r3c2: "HARD", r4c2: "BUFFONT",
+            r1c3: "CASE", r2c3: "CONTACT", r3c3: "CLOTHING", r4c3: "MOTHERBOARD",
+            r1c4: "POWER", r2c4: "PEAR", r3c4: "CANTALOUPE", r4c4: "FAT"
+        },
+        solutionGroups: {
+            yellow: { yellow1: "MOTHERBOARD", yellow2: "LUCKY", yellow3: "TOUCH", yellow4: "CONTACT" }, yellowDescription: "DAFT PUNK SONGS",
+            green: { green1: "HARD", green2: "POWER", green3: "BOARD", green4: "CASE" }, greenDescription: "PC PARTS MINUS A WORD",
+            blue: { blue1: "ELEPHANT", blue2: "LOCATION", blue3: "CLOTHING", blue4: "BUFFONT" }, blueDescription: "WHAT 'ADDRESS' MIGHT REFER TO",
+            purple: { purple1: "CANTALOUPE", purple2: "FAT", purple3: "PEAR", purple4: "ENAMEL" }, purpleDescription: "SOUNDS WITH ENDANGERED SPECIES"
+        }
+    },
 };
 
 
