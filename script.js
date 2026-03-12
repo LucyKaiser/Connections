@@ -111,7 +111,7 @@ const puzzleListObject = {
     "7": {
         name: "Morning Routine",
         author: "Lucy",
-        difficulty: "4",
+        difficulty: "3",
         initialBoardState: {
             r1c1: "MAKE UP", r2c1: "SET", r3c1: "CONCEAL", r4c1: "GLOSS",
             r1c2: "JEWELRY", r2c2: "PAINT", r3c2: "VEIL", r4c2: "MASK",
@@ -123,6 +123,40 @@ const puzzleListObject = {
             green: { green1: "CONCEAL", green2: "BURY", green3: "VEIL", green4: "MASK" }, greenDescription: "HIDE",
             blue: { blue1: "GLOSS", blue2: "MATTE", blue3: "PAINT", blue4: "SMOOTH" }, blueDescription: "SURFACE FINISHES",
             purple: { purple1: "SET", purple2: "DECK", purple3: "BASEBALL", purple4: "JEWELRY" }, purpleDescription: "FEATURING DIAMONDS"
+        }
+    },
+    "8": {
+        name: "My",
+        author: "Lucy",
+        difficulty: "1",
+        initialBoardState: {
+            r1c1: "BEAUTIFUL", r2c1: "DARK", r3c1: "TWISTED", r4c1: "FANTASY",
+            r1c2: "LIGHT", r2c2: "ATTRACTIVE", r3c2: "ASH", r4c2: "CUTE",
+            r1c3: "MIDDLE", r2c3: "ROTATE", r3c3: "SCI-FI", r4c3: "SKEW",
+            r1c4: "MYSTERY", r2c4: "PRETTY", r3c4: "SCALE", r4c4: "REALISTIC"
+        },
+        solutionGroups: {
+            yellow: { yellow1: "BEAUTIFUL", yellow2: "CUTE", yellow3: "PRETTY", yellow4: "ATTRACTIVE" }, yellowDescription: "BEAUTY",
+            green: { green1: "DARK", green2: "LIGHT", green3: "MIDDLE", green4: "ASH" }, greenDescription: "'____ GRAY'",
+            blue: { blue1: "TWISTED", blue2: "ROTATE", blue3: "SKEW", blue4: "SCALE" }, blueDescription: "GEOMETRICAL TRANSLATIONS",
+            purple: { purple1: "FANTASY", purple2: "SCI-FI", purple3: "MYSTERY", purple4: "REALISTIC" }, purpleDescription: "TYPES OF FICTION"
+        }
+    },
+    "9": {
+        name: "Don't Scratch",
+        author: "Lucy and Viv",
+        difficulty: "4",
+        initialBoardState: {
+            r1c1: "EIGHT", r2c1: "BALL", r3c1: "POOL", r4c1: "BAR",
+            r1c2: "TRIANGLE", r2c2: "NO", r3c2: "SCHOOL", r4c2: "HOURGLASS",
+            r1c3: "NEGATIVE", r2c3: "FATHER", r3c3: "SQUARE", r4c3: "PENTAGON",
+            r1c4: "NAY", r2c4: "CIRCLE", r3c4: "NEIN", r4c4: "HIDDEN"
+        },
+        solutionGroups: {
+            yellow: { yellow1: "PENTAGON", yellow2: "SQUARE", yellow3: "TRIANGLE", yellow4: "CIRCLE" }, yellowDescription: "2D SHAPES",
+            green: { green1: "POOL", green2: "BAR", green3: "SCHOOL", green4: "BALL" }, greenDescription: "SOCIAL PLACES",
+            blue: { blue1: "NEIN", blue2: "NO", blue3: "NEGATIVE", blue4: "NAY" }, blueDescription: "WAYS TO SAY NO",
+            purple: { purple1: "EIGHT", purple2: "FATHER", purple3: "HOURGLASS", purple4: "HIDDEN" }, purpleDescription: "FIGURES"
         }
     },
 };
