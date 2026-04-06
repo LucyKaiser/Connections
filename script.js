@@ -26,7 +26,7 @@ const puzzleListObject = {
     "2": {
         name: "1, 2, 3, ...",
         author: "Lucy",
-        difficulty: "3",
+        difficulty: "2",
         initialBoardState: {
             r1c1: "STEVE", r2c1: "NOTEPAD", r3c1: "PRUIM", r4c1: "MAIN",
             r1c2: "MARK", r2c2: "BODY", r3c2: "CALCULATOR", r4c2: "AGENT",
@@ -166,16 +166,67 @@ const puzzleListObject = {
         initialBoardState: {
             r1c1: "ENAMEL", r2c1: "LOCATION", r3c1: "ELEPHANT", r4c1: "BOARD",
             r1c2: "TOUCH", r2c2: "LUCKY", r3c2: "HARD", r4c2: "BUFFONT",
-            r1c3: "CASE", r2c3: "CONTACT", r3c3: "CLOTHING", r4c3: "MOTHERBOARD",
+            r1c3: "CASE", r2c3: "CONTACT", r3c3: "SPEECH", r4c3: "MOTHERBOARD",
             r1c4: "POWER", r2c4: "PEAR", r3c4: "CANTALOUPE", r4c4: "FAT"
         },
         solutionGroups: {
             yellow: { yellow1: "MOTHERBOARD", yellow2: "LUCKY", yellow3: "TOUCH", yellow4: "CONTACT" }, yellowDescription: "DAFT PUNK SONGS",
             green: { green1: "HARD", green2: "POWER", green3: "BOARD", green4: "CASE" }, greenDescription: "PC PARTS MINUS A WORD",
-            blue: { blue1: "ELEPHANT", blue2: "LOCATION", blue3: "CLOTHING", blue4: "BUFFONT" }, blueDescription: "WHAT 'ADDRESS' MIGHT REFER TO",
+            blue: { blue1: "ELEPHANT", blue2: "LOCATION", blue3: "SPEECH", blue4: "BUFFONT" }, blueDescription: "WHAT 'ADDRESS' MIGHT REFER TO",
             purple: { purple1: "CANTALOUPE", purple2: "FAT", purple3: "PEAR", purple4: "ENAMEL" }, purpleDescription: "SOUNDS WITH ENDANGERED SPECIES"
         }
     },
+    "11": {
+        name: "🟨🟦🟩🟪",
+        author: "Lucy and Viv",
+        difficulty: "2",
+        initialBoardState: {
+            r1c1: "🐔", r2c1: "💉", r3c1: "☔", r4c1: "🌗",
+            r1c2: "🧑‍🌾", r2c2: "🐳", r3c2: "🌾", r4c2: "🕯️",
+            r1c3: "🧬", r2c3: "🕛", r3c3: "🚜", r4c3: "💧",
+            r1c4: "🚣", r2c4: "🧑‍⚕️", r3c4: "🦠", r4c4: "📆"
+        },
+        solutionGroups: {
+            yellow: { yellow1: "🚣", yellow2: "💧", yellow3: "☔", yellow4: "🐳" }, yellowDescription: "FEATURING WATER",
+            green: { green1: "🧬", green2: "🦠", green3: "🧑‍⚕️", green4: "💉" }, greenDescription: "BIOLOGY TOPICS THIS YEAR",
+            blue: { blue1: "🌗", blue2: "🕯️", blue3: "🕛", blue4: "📆" }, blueDescription: "USED TO TELL TIME",
+            purple: { purple1: "🌾", purple2: "🐔", purple3: "🧑‍🌾", purple4: "🚜" }, purpleDescription: "THINGS ON A FARM"
+        }
+    },
+    "12": {
+        name: "Involving ___",
+        author: "Lucy",
+        difficulty: "4",
+        initialBoardState: {
+            r1c1: "BENCH", r2c1: "SOCCER", r3c1: "ALGEBRA", r4c1: "TEA",
+            r1c2: "MYSTIC TIMBERS", r2c2: "COMPUTER", r3c2: "MARBLES", r4c2: "TREE",
+            r1c3: "DIAMONDBACK", r2c3: "POOL", r3c3: "BASKETBALL", r4c3: "TAX",
+            r1c4: "PAPER", r2c4: "LIFE", r3c4: "RAIN", r4c4: "TIME"
+        },
+        solutionGroups: {
+            yellow: { yellow1: "SOCCER", yellow2: "POOL", yellow3: "BASKETBALL", yellow4: "MARBLES" }, yellowDescription: "INVOLVING BALLS",
+            green: { green1: "BENCH", green2: "TREE", green3: "MYSTIC TIMBERS", green4: "PAPER" }, greenDescription: "INVOLVING WOOD",
+            blue: { blue1: "ALGEBRA", blue2: "TAX", blue3: "TIME", blue4: "COMPUTER" }, blueDescription: "INVOLVING NUMBERS",
+            purple: { purple1: "TEA", purple2: "RAIN", purple3: "DIAMONDBACK", purple4: "LIFE" }, purpleDescription: "INVOLVING WATER"
+        }
+    },
+    "13": {
+        name: "The Lion King",
+        author: "Lucy, Marek",
+        difficulty: "3",
+        initialBoardState: {
+            r1c1: "SCAR", r2c1: "GLASSES", r3c1: "EYESTRAIN", r4c1: "EXCEL",
+            r1c2: "STOP", r2c2: "PLUS", r3c2: "FIRST", r4c2: "CAMERA",
+            r1c3: "WINDOW", r2c3: "SUCCEED", r3c3: "GRADUATED CYLINDER", r4c3: "HYDROPLANE",
+            r1c4: "HOLLYWOOD", r2c4: "BOARDWALK", r3c4: "SURPASS", r4c4: "PEACE"
+        },
+        solutionGroups: {
+            yellow: { yellow1: "EXCEL", yellow2: "SUCCEED", yellow3: "SURPASS", yellow4: "FIRST" }, yellowDescription: "DO GOOD",
+            green: { green1: "HOLLYWOOD", green2: "STOP", green3: "PLUS", green4: "PEACE" }, greenDescription: "____ SIGN",
+            blue: { blue1: "GLASSES", blue2: "WINDOW", blue3: "CAMERA", blue4: "GRADUATED CYLINDER" }, blueDescription: "FEATURING GLASS",
+            purple: { purple1: "SCAR", purple2: "BOARDWALK", purple3: "EYESTRAIN", purple4: "HYDROPLANE" }, purpleDescription: "ENDING IN MODES OF TRANSPORT"
+        }
+    }
 };
 
 
@@ -220,7 +271,9 @@ document.addEventListener("DOMContentLoaded", () => {
     try {initializeGame(id)} catch {}
     if (document.getElementById("listWrapper")) {
         setPuzzleList()
+        twemoji.parse(document.body)
     }
+
 })
 
 
